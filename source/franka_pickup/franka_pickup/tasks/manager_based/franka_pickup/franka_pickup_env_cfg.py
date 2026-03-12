@@ -44,7 +44,7 @@ class FrankaPickupSceneCfg(InteractiveSceneCfg):
     # ground plane
     ground = AssetBaseCfg(
         prim_path="/World/ground",
-        spawn=sim_utils.GroundPlaneCfg(size=(100.0, 100.0)),
+        spawn=sim_utils.GroundPlaneCfg(size=(500.0, 500.0)),
     )
 
     # robot
@@ -84,10 +84,15 @@ class FrankaPickupSceneCfg(InteractiveSceneCfg):
     # lime
     object = RigidObjectCfg(
         prim_path="{ENV_REGEX_NS}/Object",
-        init_state=RigidObjectCfg.InitialStateCfg(pos=[0.5, 0, 0.055], rot=[1, 0, 0, 0]),
+        # init_state=RigidObjectCfg.InitialStateCfg(pos=[0.4, -0.80, 0.055], rot=[1, 0, 0, 0]),
+        init_state=RigidObjectCfg.InitialStateCfg(pos=[0.4, 0, 0.055]),
         spawn=UsdFileCfg(
-            usd_path="omniverse://10.10.51.5/NVIDIA/Assets/Isaac/4.5/Isaac/Props/Blocks/DexCube/dex_cube_instanceable.usd",
-            scale=(0.8, 0.8, 0.8),
+            usd_path = "/home/michaela/robotics/assets/scissors_inst_light.usd",
+            #usd_path = "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1/Isaac/Props/Factory/factory_bolt_m16_tight/factory_bolt_m16_tight.usd",
+            #usd_path="/home/michaela/robotics/assets/syringe_inst_light.usd",
+            #usd_path="omniverse://10.10.51.5/NVIDIA/Assets/Isaac/Healthcare/0.3.0/5de056f4a2f0f49d2b296d51e25cbdfc054c4390712cd0b438cc6d92fa816c1a/Props/SurgicalInstruments/SurgicalScissors.usd",
+            #usd_path="https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/4.5/Isaac/Props/Blocks/DexCube/dex_cube_instanceable.usd",
+            scale=(0.01, 0.01, 0.01),
             rigid_props=RigidBodyPropertiesCfg(
                 solver_position_iteration_count=16,
                 solver_velocity_iteration_count=1,
@@ -151,15 +156,15 @@ class EventCfg:
 
     reset_all = EventTerm(func=mdp.reset_scene_to_default, mode="reset")
 
-    reset_object_position = EventTerm(
-        func=mdp.reset_root_state_uniform,
-        mode="reset",
-        params={
-            "pose_range": {"x": (-0.1, 0.1), "y": (-0.25, 0.25), "z": (0.0, 0.0)},
-            "velocity_range": {},
-            "asset_cfg": SceneEntityCfg("object", body_names="Object"),
-        },
-    )
+    # reset_object_position = EventTerm(
+    #     func=mdp.reset_root_state_uniform,
+    #     mode="reset",
+    #     params={
+    #         # "pose_range": {"x": (-0.1, 0.1), "y": (-0.25, 0.25), "z": (0.0, 0.0)},
+    #         "velocity_range": {},
+    #         "asset_cfg": SceneEntityCfg("object", body_names="Object"),
+    #     },
+    #)
 
 
 @configclass
@@ -222,7 +227,7 @@ class CommandsCfg:
         asset_name="robot",
         body_name="panda_hand",  # will be set by agent env cfg
         resampling_time_range=(5.0, 5.0),
-        debug_vis=True,
+        debug_vis=False,
         ranges=mdp.UniformPoseCommandCfg.Ranges(
             pos_x=(0.4, 0.6), pos_y=(-0.25, 0.25), pos_z=(0.25, 0.5), roll=(0.0, 0.0), pitch=(0.0, 0.0), yaw=(0.0, 0.0)
         ),
@@ -236,7 +241,7 @@ class CommandsCfg:
 @configclass
 class FrankaPickupEnvCfg(ManagerBasedRLEnvCfg):
     # Scene settings
-    scene: FrankaPickupSceneCfg = FrankaPickupSceneCfg(num_envs=1, env_spacing=4.0)
+    scene: FrankaPickupSceneCfg = FrankaPickupSceneCfg(num_envs=2048, env_spacing=2.5)
     # Basic settings
     observations: ObservationsCfg = ObservationsCfg()
     actions: ActionsCfg = ActionsCfg()
@@ -263,6 +268,6 @@ class FrankaPickupEnvCfg(ManagerBasedRLEnvCfg):
         self.sim.physx.bounce_threshold_velocity = 0.2
         self.sim.physx.bounce_threshold_velocity = 0.01
         self.sim.physx.gpu_found_lost_aggregate_pairs_capacity = 1024 * 1024 * 4
-        self.sim.physx.gpu_total_aggregate_pairs_capacity = 16 * 1024
+        self.sim.physx.gpu_total_aggregate_pairs_capacity = 100000
         self.sim.physx.friction_correlation_distance = 0.00625
 
