@@ -1,0 +1,3 @@
+~/robotics/IsaacLab/isaaclab.sh -p rsl_rl/train.py --task=Template-Franka-Pickup-v0
+
+~/robotics/IsaacLab/isaaclab.sh -p rsl_rl/play.py --num_envs 3 --task=Template-Franka-Pickup-v0 --checkpoint /home/michaela/robotics/franka_pickup/scripts/logs/rsl_rl/cube_pickup/2026-03-10_14-09-17/model_1450.pt

@@ -81,7 +81,7 @@ class FrankaPickupSceneCfg(InteractiveSceneCfg):
     #     spawn=UsdFileCfg(usd_path="omniverse://10.10.51.5/NVIDIA/Assets/Isaac/4.5/Isaac/Props/Mounts/SeattleLabTable/table_instanceable.usd"),
     # )
 
-    # lime
+    # scissors
     object = RigidObjectCfg(
         prim_path="{ENV_REGEX_NS}/Object",
         # init_state=RigidObjectCfg.InitialStateCfg(pos=[0.4, -0.80, 0.055], rot=[1, 0, 0, 0]),
@@ -270,4 +270,3 @@ class FrankaPickupEnvCfg(ManagerBasedRLEnvCfg):
         self.sim.physx.gpu_found_lost_aggregate_pairs_capacity = 1024 * 1024 * 4
         self.sim.physx.gpu_total_aggregate_pairs_capacity = 100000
         self.sim.physx.friction_correlation_distance = 0.00625
-
