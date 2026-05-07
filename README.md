@@ -1,3 +1,12 @@
+1) Have Isaac Lab + Sim installed
+2) Clone and cd into this repo into a seperate dir
+3) Install the project
+    - run /path/to/isaaclab/isaaclab.sh -p -m pip install -e source/franka_pickup
+4) run training
+    - run /path/to/isaaclab/isaaclab.sh -p rsl_rl/train.py --task=Template-Franka-Pickup-v0
+5) see results from checkpoint
+    - run /path/to/isaaclab/isaaclab.sh -p rsl_rl/play.py --num_envs 3 --task=Template-Franka-Pickup-v0 --checkpoint /path/to/checkpoint/in/logs/model_1450.pt
+
 # Template for Isaac Lab Projects
 
 ## Overview
