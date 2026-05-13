@@ -6,10 +6,10 @@
 5) Install the project by running the following command
     - /path/to/IsaacLab/isaaclab.sh -p -m pip install -e source/franka_pickup
 6) initiate training by running the following command (takes ~30 mins on my laptop)
-    - /path/to/IsaacLab/isaaclab.sh -p rsl_rl/train.py --task=Template-Franka-Pickup-v0
+    - /path/to/IsaacLab/isaaclab.sh -p scripts/rsl_rl/train.py --task=Template-Franka-Pickup-v0
 7) see results from checkpoint by running the following "play" command using a checkpoint from the previous training run
     - run the folling command while replacing the 2026-05... dir name with the one from your run
-    - /path/to/IsaacLab/isaaclab.sh -p rsl_rl/play.py --num_envs 3 --task=Template-Franka-Pickup-v0 --checkpoint /logs/rsl_rl/cube_pickup/2026-05-13_10-42-09/model_1499.pt
+    - /path/to/IsaacLab/isaaclab.sh -p scripts/rsl_rl/play.py --num_envs 3 --task=Template-Franka-Pickup-v0 --checkpoint scripts/logs/rsl_rl/cube_pickup/2026-05-13_10-42-09/model_1499.pt
 
 # Template for Isaac Lab Projects
 
