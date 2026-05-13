@@ -1,15 +1,15 @@
 1) Have Isaac Lab 2.3.2 and Isaac Sim 5.1.0 installed on Ubuntu 24.04.4
-2) Clone and cd into this repo into a seperate dir
-3) replace /path/to/IsaacLab in the following commands with the path to where IsaacLab is installed on your computer 
-4) Install version 5.0.1 of rsl_rl
-    - run /path/to/IsaacLab/isaaclab.sh -p -m pip install rsl-rl-lib==5.0.1
-5) Install the project
-    - run /path/to/IsaacLab/isaaclab.sh -p -m pip install -e source/franka_pickup
-6) run training
-    - run /path/to/IsaacLab/isaaclab.sh -p rsl_rl/train.py --task=Template-Franka-Pickup-v0
-7) see results from checkpoint
+2) Clone this repo into a seperate dir and cd into it
+3) Replace /path/to/IsaacLab in the following commands with the path to where IsaacLab is installed on your computer 
+4) Install version 5.0.1 of rsl_rl by running the following command
+    - /path/to/IsaacLab/isaaclab.sh -p -m pip install rsl-rl-lib==5.0.1
+5) Install the project by running the following command
+    - /path/to/IsaacLab/isaaclab.sh -p -m pip install -e source/franka_pickup
+6) initiate training by running the following command (takes ~30 mins on my laptop)
+    - /path/to/IsaacLab/isaaclab.sh -p rsl_rl/train.py --task=Template-Franka-Pickup-v0
+7) see results from checkpoint by running the following "play" command using a checkpoint from the previous training run
     - run the folling command while replacing the 2026-05... dir name with the one from your run
-    /path/to/IsaacLab/isaaclab.sh -p rsl_rl/play.py --num_envs 3 --task=Template-Franka-Pickup-v0 --checkpoint /logs/rsl_rl/cube_pickup/2026-05-13_10-42-09/model_1499.pt
+    - /path/to/IsaacLab/isaaclab.sh -p rsl_rl/play.py --num_envs 3 --task=Template-Franka-Pickup-v0 --checkpoint /logs/rsl_rl/cube_pickup/2026-05-13_10-42-09/model_1499.pt
 
 # Template for Isaac Lab Projects
 
