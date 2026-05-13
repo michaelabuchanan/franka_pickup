@@ -1,5 +1,7 @@
 1) Have Isaac Lab + Sim installed
 2) Clone and cd into this repo into a seperate dir
+3) Install version 5.0.1 of rsl_rl
+    - run /path/to/isaaclab/isaaclab.sh -p -m pip install rsl-rl-lib==5.0.1
 3) Install the project
     - run /path/to/isaaclab/isaaclab.sh -p -m pip install -e source/franka_pickup
 4) run training
