@@ -87,7 +87,7 @@ class FrankaPickupSceneCfg(InteractiveSceneCfg):
         # init_state=RigidObjectCfg.InitialStateCfg(pos=[0.4, -0.80, 0.055], rot=[1, 0, 0, 0]),
         init_state=RigidObjectCfg.InitialStateCfg(pos=[0.4, 0, 0.055]),
         spawn=UsdFileCfg(
-            usd_path = "/home/michaela/robotics/assets/scissors_inst_light.usd",
+            usd_path = "./scissors_inst_light.usd",
             #usd_path = "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1/Isaac/Props/Factory/factory_bolt_m16_tight/factory_bolt_m16_tight.usd",
             #usd_path="/home/michaela/robotics/assets/syringe_inst_light.usd",
             #usd_path="omniverse://10.10.51.5/NVIDIA/Assets/Isaac/Healthcare/0.3.0/5de056f4a2f0f49d2b296d51e25cbdfc054c4390712cd0b438cc6d92fa816c1a/Props/SurgicalInstruments/SurgicalScissors.usd",
